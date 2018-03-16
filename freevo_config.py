@@ -421,8 +421,11 @@ LOCAL_CONF_CHANGES = [
      Added SKIN_USE_PAGE_TRANSITIONS to select whether transitions between pages
      of menus etc are animated.
      Added SKIN_SCREEN_TRANSITION to select the style of transition.
-     """)
-
+     """),
+    (5.31,
+     """ added APPLICATIONS_LIST, APPLICATIONS_FROM_FREEDESKTOP,
+     APPLICATIONS_NEED_WINDOW_MANAGER, APPLICATIONS_WINDOW_MANAGER
+     """),
 ]
 
 
@@ -1376,6 +1379,39 @@ IMAGEVIEWER_KEEP_ZOOM_LEVEL = True
 # image will be renedered in the top left corner.
 IMAGEVIEWER_KEEP_ZOOM_POSITION = False
 
+# ======================================================================
+# Freevo external applications settings:
+# ======================================================================
+
+
+# list of applications, each a triple
+#       (name,executable path,(tuple of extra arguments))
+# 
+# warning: applications not available in the PATH will be removed from the list
+#   but remember that, when starting from systemd, /usr/games is not in the PATH
+#   If in doubt, use absolute paths
+#
+APPLICATIONS_LIST=[  ("Firefox", "firefox", ()),
+                     ("Google Chrome", "google-chrome", ()),
+                     ("OpenArena", "openarena", ()),
+                     ("Wesnoth", "wesnoth-1.12", ()),
+                     ("Tux Kart", "supertuxkart", ()),
+                     ("Tux Racer", "etr", ()),
+                     ("Warzone 2100", "warzone2100", ()),
+                     ("Terminal", "x-terminal-emulator", ()),
+]
+
+# Import freedesktop menus (not yet implemented)
+APPLICATIONS_FROM_FREEDESKTOP=False
+
+# When using 'freevo' as the only desktop guy
+# start window manager (by default x-window-manager)
+#  (if another window manager is desired, specify executable path as string)
+APPLICATIONS_NEED_WINDOW_MANAGER='auto'
+
+# Specify window manager.  This default will point to the best
+# available window manager in Debian and Ubuntu
+APPLICATIONS_WINDOW_MANAGER='x-window-manager'
 
 # ======================================================================
 # Freevo games settings:
